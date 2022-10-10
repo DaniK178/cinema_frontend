@@ -2,11 +2,11 @@
 
 const CinemaComponent = ({cinema}) => {
 
-    return (
-        <>
-        <option>{cinema}</option>
-        </>
-    )
+    // return (
+    //     <>
+    //     <option value={cinema.id}>{cinema.branch}</option>
+    //     </>
+    // )
 
 }
 export default CinemaComponent;
