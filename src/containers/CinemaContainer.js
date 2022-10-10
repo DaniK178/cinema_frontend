@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
-import CinemaListComponent from "../components/CinemaListComponent"
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import CinemaComponent from "../components/CinemaComponent";
 import MovieComponent from "../components/MovieComponent";
 import CustomerComponent from "../components/CustomerComponent";
+import HomeComponent from "../components/HomeComponent";
 
 
 const CinemaContainer = () => {
@@ -26,35 +26,19 @@ const CinemaContainer = () => {
         fetchCinemas();
     }, [])
 
-    const postChocolate = async (newChocolate) => {
-        const response = await fetch("http://localhost:8080/chocolates", {
+    const postScreen = async (newScreen) => {
+        const response = await fetch("http://localhost:8080/cinemas/:id/screens", {
             method: "POST",
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(newChocolate)
+            body: JSON.stringify(newScreen)
         })
-        const savedChocolate = await response.json()
-        setChocolates([...chocolates, savedChocolate]) 
+        const savedScreen = await response.json()
+        setScreens([...screens, savedScreen])
+    } 
 
-const cinemaOptionsList = () => {
-    const cinemaOptions = cinemas.map((cinema) => {
-        return (<>
-            key={cinema.id} cinema={cinema}
-            </>) 
-    })
 
-    return (
-        <>
-        <h3>Please select your cinema</h3>
-        <select
-            name="cinemas"
-            defaultValue="select-cinema">
-                <option disabled-value="select-cinema">Select a cinema</option>
-            {cinemaOptions}
-            </select>
-       
-        </>
-    )
-}
+   
+
 
 
     return (
@@ -71,10 +55,9 @@ const cinemaOptionsList = () => {
         </ul>
 
         <Routes>
-            {/* <Route path= "/cinema/:id" element={
-                <CinemaListComponent cinemas = {cinemas} />
-            }/> */}
-            <Route path ='/' element={<CinemaContainer />}/>
+            <Route path ='/' element={<HomeComponent 
+            
+             cinemas={cinemas}/>}/>
             <Route path ="/cinemas" element={<CinemaComponent/>}/>
             <Route path ='/cinemas/:id/movies' element={<MovieComponent/>}/>
             <Route path ='/customers' element={<CustomerComponent/>}/>
@@ -91,5 +74,6 @@ const cinemaOptionsList = () => {
 
 
 }
+
 
 export default CinemaContainer;
