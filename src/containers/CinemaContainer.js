@@ -56,7 +56,12 @@ const CinemaContainer = () => {
         })
 
         const responseCinema = await response.json()
-        await fetchMovies()
+        const cinemaIndex = cinemas.findIndex(cinema => cinema.id === responseCinema.id)
+        let newCinemas = cinemas
+        newCinemas[cinemaIndex] = responseCinema
+        setCinemas([...newCinemas])
+        // setMovies(responseCinema.movies)
+        // await fetchMovies()
 
 
     }
@@ -101,14 +106,16 @@ const CinemaContainer = () => {
                         cinemas={cinemas}
                         cinemaScreens={screens}
                         fetchScreen={fetchScreen}
+                        postMovie={postMovie}
+                        movies={movies}
 
                     />
                 } />
-                <Route path="/cinemas/:id/movies" element={<MovieComponent
+                {/* <Route path="/cinemas/:id/movies" element={<MovieComponent
                     cinemas={cinemas}
                     postMovie={postMovie}
                     movies={movies}
-                />} />
+                />} /> */}
                 <Route path='/customers' element={<CustomerComponent />} />
 
             </Routes>
