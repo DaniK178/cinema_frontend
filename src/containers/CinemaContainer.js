@@ -13,7 +13,6 @@ const CinemaContainer = () => {
     const [screens, setScreens] = useState([])
     const [customers, setCustomers] = useState([])
     const [screenings, setScreenings] = useState([])
-    const [cinemaScreens, setCinemaScreens] = useState([])
 
 
     const fetchCinemas = async () => {
@@ -23,13 +22,9 @@ const CinemaContainer = () => {
 
     }
 
-    useEffect(() => {
-        fetchCinemas();
-    }, [])
+    // SCREEN METHODS
 
     const postScreen = async (newScreen, id) => {
-
-        // add to database
 
         const response = await fetch(`http://localhost:8080/cinemas/${id}/screens`,{
             method: "POST",
@@ -37,26 +32,45 @@ const CinemaContainer = () => {
             body: JSON.stringify(newScreen)
         })
 
-    // update locally ? 
-        
         const responseCinema = await response.json()
-        setScreens([...responseCinema.screens])
-    } 
-
-    const fetchScreen = async () => {
-        const response = await fetch("http://localhost:8080/screens");
-        const jsonScreens = await response.json();
+        await fetchScreen()
         
-        setCinemaScreens(jsonScreens);
 
+    } 
+        const fetchScreen = async () => {
+            const response = await fetch("http://localhost:8080/screens");
+            const jsonScreens = await response.json();
+            
+            setScreens(jsonScreens);
     }
 
+    //MOVIE METHODS
+    const postMovie = async (newMovie, id) => {
+
+        const response = await fetch(`http://localhost:8080/cinemas/${id}/movies`,{
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(newMovie)
+        })
+
+        const responseCinema = await response.json()
+        await fetchMovies()
+         
+
+    } 
+        const fetchMovies = async (id) => {
+            const response = await fetch(`http://localhost:8080/cinemas/${id}/movies`,);
+            const jsonMovies = await response.json();           
+            setMovies(jsonMovies);
+    }
+
+
+
     useEffect(() => {
-        fetchScreen();
+        fetchCinemas()
+        fetchScreen()
+        fetchMovies()
     }, [])
-
-   
-
 
 
     return (
@@ -72,18 +86,22 @@ const CinemaContainer = () => {
 
             
         </ul>
-
-      
+  
 
         <Routes>
-            <Route path ='/' element={<HomeComponent 
-            
-             cinemas={cinemas}/>}/>
-            <Route path ="/cinemas/:id" element={<CinemaComponent
-                postScreen={postScreen} 
-                cinemas={cinemas}
-                cinemaScreens={cinemaScreens}
-                fetchScreen={fetchScreen}/>}/>
+            <Route path ='/' element={
+                <HomeComponent 
+                    cinemas={cinemas}/>}/>
+            <Route path ="/cinemas/:id" element={
+                <CinemaComponent
+                    postScreen={postScreen} 
+                    cinemas={cinemas}
+                    cinemaScreens={screens}
+                    fetchScreen={fetchScreen}
+                    postMovie={postMovie}
+                    movies={movies}
+                    />
+                }/>
             <Route path ='/cinemas/:id/movies' element={<MovieComponent/>}/>
             <Route path ='/customers' element={<CustomerComponent/>}/>
 
