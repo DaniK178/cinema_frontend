@@ -1,8 +1,14 @@
-import { useState } from "react"
+import { useState, React} from "react"
+
 import { useParams } from "react-router-dom"
+import ScreenListItem from "./ScreenListItem"
 
 
-const CinemaComponent = ({postScreen, cinemas, screens, fetchScreen}) => {
+
+const CinemaComponent = ({postScreen, cinemas, screens, fetchScreen, cinemaScreens}) => {
+
+//this will reload the page automatically, when called on add a new screen button 
+ const refreshPage = () => window.location.reload(false);
 
  const {id}= useParams()
  const cinemaURL = cinemas.find((cinema)=> {
@@ -33,15 +39,27 @@ const CinemaComponent = ({postScreen, cinemas, screens, fetchScreen}) => {
 // that match the cinema in the url 
 // and we want to display the screen number along side the capacity
 
+const screenListItems = cinemaScreens.map((screen, index)=> {
+   if(screen.cinema.id === cinemaURL.id) {return <ScreenListItem 
+        screen={screen} 
+        key = {index}/>
+        
+}}
+)
+
+//if screen.cinema.id === cinemaURL.id
+
+
+
 
     return(
         <>
 
         <h3>Current number of Screens</h3>
 
-        <p>Screen number {stateScreen.id} has a capacity {stateScreen.capacity}</p>
-
-        {fetchScreens}
+        <ol>
+        {screenListItems}
+        </ol>
 
 
         <form onSubmit={handlePostScreen}>
@@ -54,7 +72,7 @@ const CinemaComponent = ({postScreen, cinemas, screens, fetchScreen}) => {
                 onChange={handleChange}
                 value={stateScreen.capacity}
             />
-            <button type="submit">Submit</button>
+            <button type="submit" onClick={refreshPage}>Submit</button>
 
 
         </form>

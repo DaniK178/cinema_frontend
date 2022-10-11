@@ -43,13 +43,6 @@ const CinemaContainer = () => {
         setScreens([...responseCinema.screens])
     } 
 
-// const getScreensByCinema = (id) => {
-//     cinemas.map((cinema) => {
-//         screens.map()
-//     })
-
-// }
-
     const fetchScreen = async () => {
         const response = await fetch("http://localhost:8080/screens");
         const jsonScreens = await response.json();
@@ -89,6 +82,7 @@ const CinemaContainer = () => {
             <Route path ="/cinemas/:id" element={<CinemaComponent
                 postScreen={postScreen} 
                 cinemas={cinemas}
+                cinemaScreens={cinemaScreens}
                 fetchScreen={fetchScreen}/>}/>
             <Route path ='/cinemas/:id/movies' element={<MovieComponent/>}/>
             <Route path ='/customers' element={<CustomerComponent/>}/>
