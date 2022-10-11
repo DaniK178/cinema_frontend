@@ -8,7 +8,7 @@ import HomeComponent from "../components/HomeComponent";
 
 const CinemaContainer = () => {
 
-    const [cinemas,setCinemas] = useState([])
+    const [cinemas, setCinemas] = useState([])
     const [movies, setMovies] = useState([])
     const [screens, setScreens] = useState([])
     const [customers, setCustomers] = useState([])
@@ -26,42 +26,45 @@ const CinemaContainer = () => {
 
     const postScreen = async (newScreen, id) => {
 
-        const response = await fetch(`http://localhost:8080/cinemas/${id}/screens`,{
+        const response = await fetch(`http://localhost:8080/cinemas/${id}/screens`, {
             method: "POST",
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newScreen)
         })
 
         const responseCinema = await response.json()
         await fetchScreen()
-        
 
-    } 
-        const fetchScreen = async () => {
-            const response = await fetch("http://localhost:8080/screens");
-            const jsonScreens = await response.json();
-            
-            setScreens(jsonScreens);
+
+    }
+    const fetchScreen = async () => {
+        const response = await fetch("http://localhost:8080/screens");
+        const jsonScreens = await response.json();
+
+        setScreens(jsonScreens);
     }
 
     //MOVIE METHODS
     const postMovie = async (newMovie, id) => {
 
-        const response = await fetch(`http://localhost:8080/cinemas/${id}/movies`,{
+        console.log(id);
+
+        const response = await fetch(`http://localhost:8080/cinemas/${id}/movies`, {
             method: "POST",
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newMovie)
         })
 
         const responseCinema = await response.json()
         await fetchMovies()
-         
 
-    } 
-        const fetchMovies = async (id) => {
-            const response = await fetch(`http://localhost:8080/cinemas/${id}/movies`,);
-            const jsonMovies = await response.json();           
-            setMovies(jsonMovies);
+
+    }
+    const fetchMovies = async (id) => {
+        console.log(id);
+        const response = await fetch(`http://localhost:8080/cinemas/${id}/movies`,);
+        const jsonMovies = await response.json();
+        setMovies(jsonMovies);
     }
 
 
@@ -74,45 +77,48 @@ const CinemaContainer = () => {
 
 
     return (
-    
+
         <BrowserRouter>
 
-        <ul>
+            <ul>
 
-          <li> <Link to='/'> Home </Link> </li>
-          <li> <Link to='/cinemas/:id'> Cinemas </Link> </li>
-          <li> <Link to='/cinemas/:id/movies'> Movies </Link> </li>
-          <li> <Link to='/customers'> Customers </Link> </li>
+                <li> <Link to='/'> Home </Link> </li>
+                <li> <Link to='/cinemas/:id'> Cinemas </Link> </li>
+                <li> <Link to='/cinemas/:id/movies'> Movies </Link> </li>
+                <li> <Link to='/customers'> Customers </Link> </li>
 
-            
-        </ul>
-  
 
-        <Routes>
-            <Route path ='/' element={
-                <HomeComponent 
-                    cinemas={cinemas}/>}/>
-            <Route path ="/cinemas/:id" element={
-                <CinemaComponent
-                    postScreen={postScreen} 
+            </ul>
+
+
+            <Routes>
+                <Route path='/' element={
+                    <HomeComponent
+                        cinemas={cinemas} />} />
+                <Route path="/cinemas/:id" element={
+                    <CinemaComponent
+                        postScreen={postScreen}
+                        cinemas={cinemas}
+                        cinemaScreens={screens}
+                        fetchScreen={fetchScreen}
+
+                    />
+                } />
+                <Route path="/cinemas/:id/movies" element={<MovieComponent
                     cinemas={cinemas}
-                    cinemaScreens={screens}
-                    fetchScreen={fetchScreen}
                     postMovie={postMovie}
                     movies={movies}
-                    />
-                }/>
-            <Route path ='/cinemas/:id/movies' element={<MovieComponent/>}/>
-            <Route path ='/customers' element={<CustomerComponent/>}/>
+                />} />
+                <Route path='/customers' element={<CustomerComponent />} />
 
-        </Routes>
-         
+            </Routes>
+
         </BrowserRouter>
-        
+
     )
 
 
-    
+
 
 
 

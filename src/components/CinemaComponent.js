@@ -1,37 +1,39 @@
 import { useState, React} from "react"
-
 import { useParams } from "react-router-dom"
 import MovieListComponent from "./MovieListComponent"
 import ScreenListItem from "./ScreenListItem"
 
 
 
-const CinemaComponent = ({postScreen, cinemas, cinemaScreens, movies, postMovie}) => {
+const CinemaComponent = ({postScreen, cinemas, cinemaScreens, postMovie}) => {
     
     const [stateScreen, setStateScreen] = useState({
         capacity: 0
      })
 
-     const [stateMovie, setStateMovie] = useState({
-        genre: "",
-        length: 0,
-        releaseDate: 0,
-        title: ""
-     })
+    //  const [stateMovie, setStateMovie] = useState({
+    //     genre: "",
+    //     length: 0,
+    //     releaseDate: 0,
+    //     title: ""
+    //  })
 
 
 
     const {id}= useParams()
-    const cinemaURL = cinemas.find((cinema)=> {
-        cinema.id = parseInt(id)
-        return cinema; 
+    const cinema = cinemas.find((cinema)=> {
+        const cinemaId = parseInt(id)
+        return cinemaId === cinema.id; 
     })   
+
+    const movieListItems = cinema.movies.map((movie) => {
+        return <MovieListComponent movie={movie} />
+    })
 
     //SCREEN METHODS
 
     const handleScreenChange = (event) => {
         let screenCapacity = event.target.name;
-
         let copiedScreen = {... stateScreen}
         copiedScreen[screenCapacity] = event.target.value;
         setStateScreen(copiedScreen);
@@ -39,37 +41,37 @@ const CinemaComponent = ({postScreen, cinemas, cinemaScreens, movies, postMovie}
 
     const handlePostScreen = (event) => {
         event.preventDefault()
-        postScreen(stateScreen, cinemaURL.id)
+        postScreen(stateScreen, cinema.id)
     }
 
     
     const screenListItems = cinemaScreens.map((screen, index)=> {
-    if(screen.cinema.id === cinemaURL.id) {return <ScreenListItem 
+    if(screen.cinema.id === cinema.id) {return <ScreenListItem 
             screen={screen} 
             key = {index}/>      
         }} )
 
-        //MOVIE METHODS
+        // //MOVIE METHODS
 
-        const handleMovieChange = (event) => {
-            let movieProperty= event.target.name;
+        // const handleMovieChange = (event) => {
+        //     let movieProperty= event.target.name;
     
-            let copiedMovie = {... stateMovie}
-            copiedMovie[movieProperty] = event.target.value;
-            setStateMovie(copiedMovie);
-        }
+        //     let copiedMovie = {... stateMovie}
+        //     copiedMovie[movieProperty] = event.target.value;
+        //     setStateMovie(copiedMovie);
+        // }
     
-        const handlePostMovie = (event) => {
-            event.preventDefault()
-            postMovie(stateMovie, cinemaURL.id)
-        }
+        // const handlePostMovie = (event) => {
+        //     event.preventDefault()
+        //     postMovie(stateMovie, cinemaURL.id)
+        // }
     
         
-        const movieListItems = movies.map((movie, index)=> {
-        if(movie.cinema.id === cinemaURL.id) {return <MovieListComponent 
-                movie={movie} 
-                key = {index}/>      
-            }} )  
+        // const movieListItems = movies.map((movie, index)=> {
+        // if(movie.cinema.id === cinemaURL.id) {return <MovieListComponent 
+        //         movie={movie} 
+        //         key = {index}/>      
+        //     }} )  
 
 
 
@@ -100,8 +102,14 @@ const CinemaComponent = ({postScreen, cinemas, cinemaScreens, movies, postMovie}
             <button type="submit">Submit</button>
         </form>
 
-
         <h3>Current Movies Being Shown</h3>
+
+        <ol>
+        {movieListItems}
+        </ol>
+
+
+        {/* <h3>Current Movies Being Shown</h3>
 
         <ol>
         {movieListItems}
@@ -143,7 +151,7 @@ const CinemaComponent = ({postScreen, cinemas, cinemaScreens, movies, postMovie}
                 value={stateMovie.title}
             />
             <button type="submit">Submit</button>
-        </form>
+        </form> */}
 
         </>
         
