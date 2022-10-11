@@ -26,8 +26,8 @@ const CinemaContainer = () => {
         fetchCinemas();
     }, [])
 
-    const postScreen = async (newScreen) => {
-        const response = await fetch("http://localhost:8080/cinemas/:id/screens", {
+    const postScreen = async (newScreen, id) => {
+        const response = await fetch(`http://localhost:8080/cinemas/${id}/screens`,{
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newScreen)
@@ -42,12 +42,13 @@ const CinemaContainer = () => {
 
 
     return (
+    
         <BrowserRouter>
 
         <ul>
 
           <li> <Link to='/'> Home </Link> </li>
-          <li> <Link to='/cinemas'> Cinemas </Link> </li>
+          <li> <Link to='/cinemas/:id'> Cinemas </Link> </li>
           <li> <Link to='/cinemas/:id/movies'> Movies </Link> </li>
           <li> <Link to='/customers'> Customers </Link> </li>
 
@@ -58,7 +59,8 @@ const CinemaContainer = () => {
             <Route path ='/' element={<HomeComponent 
             
              cinemas={cinemas}/>}/>
-            <Route path ="/cinemas" element={<CinemaComponent/>}/>
+            <Route path ="/cinemas/:id" element={<CinemaComponent
+                postScreen={postScreen} cinemas={cinemas}/>}/>
             <Route path ='/cinemas/:id/movies' element={<MovieComponent/>}/>
             <Route path ='/customers' element={<CustomerComponent/>}/>
 
