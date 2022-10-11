@@ -27,13 +27,20 @@ const CinemaContainer = () => {
     }, [])
 
     const postScreen = async (newScreen, id) => {
+
+        // add to database
+
         const response = await fetch(`http://localhost:8080/cinemas/${id}/screens`,{
             method: "POST",
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newScreen)
         })
-        const savedScreen = await response.json()
-        setScreens([...screens, savedScreen])
+
+    // update locally ? 
+        
+        const responseCinema = await response.json()
+        setScreens([...responseCinema.screens])
+
     } 
 
 

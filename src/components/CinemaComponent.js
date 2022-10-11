@@ -5,9 +5,9 @@ import { useParams } from "react-router-dom"
 const CinemaComponent = ({postScreen, cinemas, screens}) => {
 
  const {id}= useParams()
- const cinemas_Id = cinemas.find((cinema)=> {
-    const cinemaId = parseInt(id)
-    return cinema.id === cinemaId; 
+ const cinemaURL = cinemas.find((cinema)=> {
+    cinema.id = parseInt(id)
+    return cinema; 
  })   
 
  const [stateScreen, setStateScreen] = useState({
@@ -24,7 +24,7 @@ const CinemaComponent = ({postScreen, cinemas, screens}) => {
 
  const handlePostScreen = (event) => {
     event.preventDefault()
-    postScreen(stateScreen, cinemas_Id.id)
+    postScreen(stateScreen, cinemaURL.id)
  }
     return(
         <form onSubmit={handlePostScreen}>
