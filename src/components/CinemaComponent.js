@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useParams } from "react-router-dom"
 
 
-const CinemaComponent = ({postScreen, cinemas, screens}) => {
+const CinemaComponent = ({postScreen, cinemas, screens, fetchScreen}) => {
 
  const {id}= useParams()
  const cinemaURL = cinemas.find((cinema)=> {
@@ -26,7 +26,24 @@ const CinemaComponent = ({postScreen, cinemas, screens}) => {
     event.preventDefault()
     postScreen(stateScreen, cinemaURL.id)
  }
+
+ const fetchScreens = fetchScreen;
+
+// display the screens - using the fetch and a filter
+// that match the cinema in the url 
+// and we want to display the screen number along side the capacity
+
+
     return(
+        <>
+
+        <h3>Current number of Screens</h3>
+
+        <p>Screen number {stateScreen.id} has a capacity {stateScreen.capacity}</p>
+
+        {fetchScreens}
+
+
         <form onSubmit={handlePostScreen}>
             <h3>Add a new Screen</h3>
             <label htmlFor="screen capacity">Enter Screen Capacity:</label>
@@ -41,6 +58,7 @@ const CinemaComponent = ({postScreen, cinemas, screens}) => {
 
 
         </form>
+        </>
         
     )
 }

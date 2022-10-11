@@ -13,6 +13,7 @@ const CinemaContainer = () => {
     const [screens, setScreens] = useState([])
     const [customers, setCustomers] = useState([])
     const [screenings, setScreenings] = useState([])
+    const [cinemaScreens, setCinemaScreens] = useState([])
 
 
     const fetchCinemas = async () => {
@@ -40,9 +41,26 @@ const CinemaContainer = () => {
         
         const responseCinema = await response.json()
         setScreens([...responseCinema.screens])
-
     } 
 
+// const getScreensByCinema = (id) => {
+//     cinemas.map((cinema) => {
+//         screens.map()
+//     })
+
+// }
+
+    const fetchScreen = async () => {
+        const response = await fetch("http://localhost:8080/screens");
+        const jsonScreens = await response.json();
+        
+        setCinemaScreens(jsonScreens);
+
+    }
+
+    useEffect(() => {
+        fetchScreen();
+    }, [])
 
    
 
@@ -62,12 +80,16 @@ const CinemaContainer = () => {
             
         </ul>
 
+      
+
         <Routes>
             <Route path ='/' element={<HomeComponent 
             
              cinemas={cinemas}/>}/>
             <Route path ="/cinemas/:id" element={<CinemaComponent
-                postScreen={postScreen} cinemas={cinemas}/>}/>
+                postScreen={postScreen} 
+                cinemas={cinemas}
+                fetchScreen={fetchScreen}/>}/>
             <Route path ='/cinemas/:id/movies' element={<MovieComponent/>}/>
             <Route path ='/customers' element={<CustomerComponent/>}/>
 
