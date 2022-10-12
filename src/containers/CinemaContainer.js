@@ -4,6 +4,7 @@ import CinemaComponent from "../components/CinemaComponent";
 import MovieComponent from "../components/MovieComponent";
 import CustomerComponent from "../components/CustomerComponent";
 import HomeComponent from "../components/HomeComponent";
+import ScreenDetailComponent from "../components/ScreenDetailComponent";
 
 
 const CinemaContainer = () => {
@@ -13,7 +14,8 @@ const CinemaContainer = () => {
     const [screens, setScreens] = useState([])
     const [customers, setCustomers] = useState([])
     const [screenings, setScreenings] = useState([])
-
+    // const [selectedScreen, setSelectedScreen] = useState([])
+    
 
     const fetchCinemas = async () => {
         const response = await fetch("http://localhost:8080/cinemas");
@@ -43,6 +45,10 @@ const CinemaContainer = () => {
 
         setScreens(jsonScreens);
     }
+
+    // const selectScreen = (screen) => {
+    //     setSelectedScreen(screen);
+    // }
 
     //MOVIE METHODS
     const postMovie = async (newMovie, id) => {
@@ -82,6 +88,14 @@ const CinemaContainer = () => {
 
 
     return (
+        <>
+       
+        {/* {selectedScreen ? 
+            <ScreenDetailComponent 
+            selectedScreen={selectedScreen}
+            />
+            : <div></div>
+        } */}
 
         <BrowserRouter>
 
@@ -100,6 +114,7 @@ const CinemaContainer = () => {
                 <Route path='/' element={
                     <HomeComponent
                         cinemas={cinemas} />} />
+                        
                 <Route path="/cinemas/:id" element={
                     <CinemaComponent
                         postScreen={postScreen}
@@ -108,20 +123,24 @@ const CinemaContainer = () => {
                         fetchScreen={fetchScreen}
                         postMovie={postMovie}
                         movies={movies}
-
-                    />
+                        // selectScreen={selectScreen}
+                        />
                 } />
+
+               
+
                 {/* <Route path="/cinemas/:id/movies" element={<MovieComponent
                     cinemas={cinemas}
                     postMovie={postMovie}
                     movies={movies}
                 />} /> */}
+
                 <Route path='/customers' element={<CustomerComponent />} />
 
             </Routes>
 
         </BrowserRouter>
-
+        </>
     )
 
 

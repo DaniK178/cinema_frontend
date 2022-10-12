@@ -5,7 +5,7 @@ import ScreenListItem from "./ScreenListItem"
 
 
 
-const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie }) => {
+const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, selectScreen }) => {
 
     const [stateScreen, setStateScreen] = useState({
         capacity: 0
@@ -40,7 +40,9 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie }) => {
         if (screen.cinema.id === cinema.id) {
             return <ScreenListItem
                 screen={screen}
-                key={index} />
+                key={index}
+                // selectScreen={selectScreen} 
+                />
         }
     })
 
@@ -100,7 +102,7 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie }) => {
                 {cinema.movies.map((movie) => {
                     return <MovieListComponent movie={movie} />
                 })} 
-                
+
                 {/* {movieListItems} */}
             </ol>
 
@@ -120,7 +122,7 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie }) => {
                     placeholder="Enter Length"
                     name="length"
                     onChange={handleMovieChange}
-                    value={cinema.movies.length}
+                    value={cinema.movies.runTime}
                 />
                 <label htmlFor="enter releaseDate">Enter Release Date:</label>
                 <input

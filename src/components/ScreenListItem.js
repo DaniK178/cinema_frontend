@@ -1,8 +1,14 @@
-const ScreenListItem = ({screen}) => {
+const ScreenListItem = ({screen, selectScreen}) => {
+
+    const handleClick = () => {
+        selectScreen(screen);
+    }
 
     return (
     
-        <li> CinemaBranch: {screen.cinema.id}, Screen capacity:{screen.capacity} 
+        <li>Screen capacity:{screen.capacity} 
+        <br />
+        <button onClick={handleClick}>Select screen</button>
         
         </li>
     );
