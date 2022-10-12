@@ -1,7 +1,7 @@
 const ScreenListItem = ({screen, selectScreen}) => {
 
     const handleClick = () => {
-        selectScreen();
+        selectScreen(screen);
     }
 
     return (

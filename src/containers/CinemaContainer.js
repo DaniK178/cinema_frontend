@@ -14,7 +14,7 @@ const CinemaContainer = () => {
     const [screens, setScreens] = useState([])
     const [customers, setCustomers] = useState([])
     const [screenings, setScreenings] = useState([])
-    const [selectedScreen, setSelectedScreen] = useState([])
+    const [selectedScreen, setSelectedScreen] = useState(null)
     
 
     const fetchCinemas = async () => {
@@ -47,6 +47,7 @@ const CinemaContainer = () => {
     }
 
     const selectScreen = (screen) => {
+        console.log('select screen: ', screen)
         setSelectedScreen(screen);
     }
 
@@ -87,12 +88,12 @@ const CinemaContainer = () => {
     return (
         <>
        
-        {/* {selectedScreen ? 
+        {selectedScreen && selectedScreen.screenings ? 
             <ScreenDetailComponent 
             selectedScreen={selectedScreen}
             />
             : <div></div>
-        } */}
+        }
 
         <BrowserRouter>
 
