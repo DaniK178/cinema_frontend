@@ -5,7 +5,7 @@ import ScreenListItem from "./ScreenListItem"
 
 
 
-const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, selectScreen }) => {
+const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, selectScreen, postMovieToScreen }) => {
 
     const [stateScreen, setStateScreen] = useState({
         capacity: 0
@@ -42,6 +42,7 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
                 screen={screen}
                 key={index}
                 selectScreen={selectScreen} 
+            
                 />
         }
     })
@@ -100,7 +101,11 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
 
             <ol>
                 {cinema.movies.map((movie) => {
-                    return <MovieListComponent movie={movie} />
+                    return <MovieListComponent 
+                    movie={movie}
+                    screens={cinemaScreens}
+                    cinemas ={cinemas}
+                    postMovieToScreen ={postScreeningToScreen} />
                 })} 
 
                 {/* {movieListItems} */}

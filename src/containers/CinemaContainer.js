@@ -68,12 +68,26 @@ const CinemaContainer = () => {
         newCinemas[cinemaIndex] = responseCinema
         setCinemas([...newCinemas])
     }
+
     
     const fetchMovies = async (id) => {
         console.log(id);
         const response = await fetch(`http://localhost:8080/cinemas/${id}/movies`,);
         const jsonMovies = await response.json();
         setMovies(jsonMovies);
+    }
+
+
+    // posting screening to a screen
+
+    const postMovieToScreen = async (screenId, movieId, cinemaId, screeningId) => {
+
+        const response = await fetch (`http://localhost:8080/screens/${screenId}/screening/${screeningId}?movieId=${movieId}&cinemaId=${cinemaId}`)
+        const jsonScreenings = await response.json();
+        setScreenings(...screenings,jsonScreenings);
+
+
+        
     }
 
 
@@ -122,6 +136,7 @@ const CinemaContainer = () => {
                         postMovie={postMovie}
                         movies={movies}
                         selectScreen={selectScreen}
+                        postMovieToScreen ={postMovieToScreen}
                         />
                 } />
 
