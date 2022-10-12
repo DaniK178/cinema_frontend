@@ -2,10 +2,11 @@ import { useState, React } from "react"
 import { useParams } from "react-router-dom"
 import MovieListComponent from "./MovieListComponent"
 import ScreenListItem from "./ScreenListItem"
+import ScreenDetailComponent from "./ScreenDetailComponent"
 
 
 
-const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, selectScreen, postMovieToScreen }) => {
+const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, selectScreen, deleteMovie, selectedScreen }) => {
 
     const [stateScreen, setStateScreen] = useState({
         capacity: 0
@@ -41,9 +42,9 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
             return <ScreenListItem
                 screen={screen}
                 key={index}
-                selectScreen={selectScreen} 
-            
-                />
+                selectScreen={selectScreen}
+
+            />
         }
     })
 
@@ -68,7 +69,6 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
         postMovie(stateMovie, id)
     }
 
-
     return (
         <>
 
@@ -80,6 +80,12 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
                 {screenListItems}
             </ol>
 
+            {selectedScreen && selectedScreen.screenings ?
+                <ScreenDetailComponent
+                    selectedScreen={selectedScreen}
+                />
+                : <div></div>
+            }
 
             <form onSubmit={handlePostScreen}>
                 <h3>Add a new Screen</h3>
@@ -94,22 +100,24 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
                 <button type="submit">Submit</button>
             </form>
 
-
             {/* Form to add a movie */}
 
             <h3>Current Movies Being Shown</h3>
+            {/* {cinema} */}
 
             <ol>
                 {cinema.movies.map((movie) => {
-                    return <MovieListComponent 
-                    movie={movie}
-                    screens={cinemaScreens}
-                    cinemas ={cinemas}
-                    postMovieToScreen ={postScreeningToScreen} />
+                    return <MovieListComponent
+                        movie={movie}
+                        screens={cinemaScreens}
+                        cinemas={cinemas}
+                        deleteMovie={deleteMovie}
+                    // postMovieToScreen ={postScreeningToScreen} 
+                    />
                 })} 
 
                 {/* {movieListItems} */}
-            </ol>
+             </ol>
 
             <form onSubmit={handlePostMovie}>
                 <h3>Add a new Movie</h3>

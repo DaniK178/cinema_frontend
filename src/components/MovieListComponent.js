@@ -1,9 +1,7 @@
 import { useParams } from "react-router-dom"
 
 
-const MovieListComponent = ({ movie, screens, cinemas, postScreeningToScreen }) => {
-
-
+const MovieListComponent = ({ movie, screens, cinemas, deleteMovie}) => {
 
     const { id } = useParams()
     const cinema = cinemas.find((cinema) => {
@@ -20,36 +18,45 @@ const MovieListComponent = ({ movie, screens, cinemas, postScreeningToScreen }) 
         }
     })
 
-    // const screenId = screens.map((screen) => {
-    //     return screen.id;
-    // })
-
-    // screenId, movieId, cinemaId, screeningId
-    
-    const handlePostScreening = (event) => {
-        event.preventDefault()
-        console.log(event)
-        postMovieToScreen(event.target.value)
-    }
-
-
-     
-
+    const handleDeleteMovie = (evt) => {
+        evt.preventDefault();
+        console.log("movie in delete method: " + JSON.stringify(movie));
+        console.log("cinema...: " + JSON.stringify(cinema));
+        deleteMovie(cinema.id, movie.id);
+    } 
 
     return (
         <>
             <li> Title:{movie.title}, Genre {movie.genre} </li>
             <br></br>
-            <form onSubmit={handlePostScreening}>
+            <form>
                 <select>
                     <option disabled-value="select-screen" >Select Screen</option>
                     {screensOptions}
                 </select>
                 <button type="submit">Add Movie to screen</button>
+                <br></br>
+                <button onClick= {handleDeleteMovie}>Delete Movie</button>
             </form>
+
         </>
     );
 }
 
 
 export default MovieListComponent;
+
+
+
+
+    // const screenId = screens.map((screen) => {
+    //     return screen.id;
+    // })
+
+    // screenId, movieId, cinemaId, screeningId
+    
+    // const handlePostScreening = (event) => {
+    //     event.preventDefault()
+    //     console.log(event)
+    //     postMovieToScreen(event.target.value)
+    // }

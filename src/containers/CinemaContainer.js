@@ -47,14 +47,11 @@ const CinemaContainer = () => {
     }
 
     const selectScreen = (screen) => {
-        console.log('select screen: ', screen)
         setSelectedScreen(screen);
     }
 
     //MOVIE METHODS
     const postMovie = async (newMovie, id) => {
-
-        console.log(id);
 
         const response = await fetch(`http://localhost:8080/cinemas/${id}/movies`, {
             method: "POST",
@@ -71,47 +68,58 @@ const CinemaContainer = () => {
 
     
     const fetchMovies = async (id) => {
-        console.log(id);
         const response = await fetch(`http://localhost:8080/cinemas/${id}/movies`,);
         const jsonMovies = await response.json();
-        setMovies(jsonMovies);
+        setMovies([...jsonMovies]);
+    }
+
+    const deleteMovie = async (id, movieId) => {
+        // delete from db
+        console.log(id);
+        console.log(movieId);
+        await fetch(`http://localhost:8080/cinemas/${id}/movies/${movieId}`, {
+            method: "DELETE",
+            headers: {'Content-Type': 'application/json'}
+        });
+        await fetchCinemas();
+        // delete locally
+        
+       // setMovies(movies.filter(movie => movie.id !== movieId))
     }
 
 
     // posting screening to a screen
 
-    const postMovieToScreen = async (screenId, movieId, cinemaId, screeningId) => {
+    // const postMovieToScreen = async (screenId, movieId, cinemaId, screeningId) => {
 
-        const response = await fetch (`http://localhost:8080/screens/${screenId}/screening/${screeningId}?movieId=${movieId}&cinemaId=${cinemaId}`)
-        const jsonScreenings = await response.json();
-        setScreenings(...screenings,jsonScreenings);
+    //     const response = await fetch (`http://localhost:8080/screens/${screenId}/screening/${screeningId}?movieId=${movieId}&cinemaId=${cinemaId}`)
+    //     const jsonScreenings = await response.json();
+    //     setScreenings(...screenings,jsonScreenings);
 
 
         
-    }
+    // }
 
 
 
     useEffect(() => {
         fetchCinemas()
         fetchScreen()
-        fetchMovies()
-    }, [])
+       // fetchMovies()
+    }, []);
 
 
     return (
         <>
-       
-        {selectedScreen && selectedScreen.screenings ? 
-            <ScreenDetailComponent 
-            selectedScreen={selectedScreen}
-            />
-            : <div></div>
-        }
+        
+      
 
         <BrowserRouter>
+            
+            <nav>
 
             <ul>
+               
 
                 <li> <Link to='/'> Home </Link> </li>
                 <li> <Link to='/cinemas/:id'> Cinemas </Link> </li>
@@ -120,6 +128,9 @@ const CinemaContainer = () => {
 
 
             </ul>
+        </nav>
+
+        <h1>Welcome to BrightChain Cinema Mangement System</h1>
 
 
             <Routes>
@@ -136,7 +147,9 @@ const CinemaContainer = () => {
                         postMovie={postMovie}
                         movies={movies}
                         selectScreen={selectScreen}
-                        postMovieToScreen ={postMovieToScreen}
+                        deleteMovie={deleteMovie}
+                        selectedScreen={selectedScreen}
+                        // postMovieToScreen ={postMovieToScreen}
                         />
                 } />
 
