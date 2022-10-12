@@ -41,7 +41,7 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
             return <ScreenListItem
                 screen={screen}
                 key={index}
-                // selectScreen={selectScreen} 
+                selectScreen={selectScreen} 
                 />
         }
     })

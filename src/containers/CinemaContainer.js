@@ -14,7 +14,7 @@ const CinemaContainer = () => {
     const [screens, setScreens] = useState([])
     const [customers, setCustomers] = useState([])
     const [screenings, setScreenings] = useState([])
-    // const [selectedScreen, setSelectedScreen] = useState([])
+    const [selectedScreen, setSelectedScreen] = useState([])
     
 
     const fetchCinemas = async () => {
@@ -46,9 +46,9 @@ const CinemaContainer = () => {
         setScreens(jsonScreens);
     }
 
-    // const selectScreen = (screen) => {
-    //     setSelectedScreen(screen);
-    // }
+    const selectScreen = (screen) => {
+        setSelectedScreen(screen);
+    }
 
     //MOVIE METHODS
     const postMovie = async (newMovie, id) => {
@@ -66,11 +66,8 @@ const CinemaContainer = () => {
         let newCinemas = cinemas
         newCinemas[cinemaIndex] = responseCinema
         setCinemas([...newCinemas])
-        // setMovies(responseCinema.movies)
-        // await fetchMovies()
-
-
     }
+    
     const fetchMovies = async (id) => {
         console.log(id);
         const response = await fetch(`http://localhost:8080/cinemas/${id}/movies`,);
@@ -123,7 +120,7 @@ const CinemaContainer = () => {
                         fetchScreen={fetchScreen}
                         postMovie={postMovie}
                         movies={movies}
-                        // selectScreen={selectScreen}
+                        selectScreen={selectScreen}
                         />
                 } />
 
