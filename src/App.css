@@ -1,38 +1,60 @@
-.App {
-  text-align: center;
+.font-link{
+  font-family: 'Cairo', sans-serif;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+body{
+  background-color:#1a1a1c;
+  color:white;
+  font-family: 'Cairo', sans-serif;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+header nav ul {
+  width: 60%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: horizontal;
+  justify-content: space-around;
+  list-style: none;
+  font-size: larger;
+  color: aliceblue;
+
 }
 
-.App-link {
-  color: #61dafb;
-}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+ header {
+  
+    background-color: black;
+    /* display: flex;
+    align-items: center; */
+    color: white;
+
+
+ }
+
+
+ header nav li:Link{
+  text-decoration: none
+ }
+
+ header nav ul:visited{
+  text-decoration: none
+ }
+
+ header nav li:hover{
+  color: pink;
+ 
+ }
+
+ header nav li:active{
+  text-decoration: none
+ }
+
+
+#CinemaOfTheMonth{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+
 }
+ 

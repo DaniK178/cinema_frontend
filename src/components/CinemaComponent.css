@@ -1,0 +1,46 @@
+
+.screens {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.screens .screenListItems {
+    padding: 4%;
+    order: 1;
+    align-items: center;
+
+}
+
+.screens .screen-details {
+    padding: 4%;
+    order: 2;
+    align-items: center;
+       
+}
+
+.postScreen {
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    
+       
+}
+
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    
+    
+
+
+}
+
+.movie-list-item {
+    width: 19rem;
+    margin: 1rem;
+    background-color: beige;
+
+
+}

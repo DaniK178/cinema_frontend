@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useState } from "react";
+import CinemaOfTheMonth from "./CinemaOfTheMonth";
 
 const HomeComponent = ({cinemas}) => {
 
@@ -42,7 +43,7 @@ const HomeComponent = ({cinemas}) => {
 
        </section>
        <section className= "Cinema Of the Month">
-
+       <CinemaOfTheMonth/>
        </section>
         </>
     )

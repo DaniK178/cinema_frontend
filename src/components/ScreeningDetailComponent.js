@@ -1,7 +1,6 @@
-import ScreeningListItemComponent from "./ScreeningListItemComponent"
+import ScreeningListItemComponent from "./ScreeningDetailListItemComponent"
 
 const ScreenDetailComponent = ({selectedScreen}) => {
-    console.log(selectedScreen)
 
     const screeningListItems = selectedScreen.screenings.map((screening) => {
         return <ScreeningListItemComponent 

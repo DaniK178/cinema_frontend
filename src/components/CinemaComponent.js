@@ -2,7 +2,8 @@ import { useState, React } from "react"
 import { useParams } from "react-router-dom"
 import MovieListComponent from "./MovieListComponent"
 import ScreenListItem from "./ScreenListItem"
-import ScreenDetailComponent from "./ScreenDetailComponent"
+import ScreenDetailComponent from "./ScreeningDetailComponent"
+import './CinemaComponent.css';
 
 
 
@@ -17,10 +18,6 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
         const cinemaId = parseInt(id)
         return cinemaId === cinema.id;
     })
-
-    // const movieListItems = cinema.movies.map((movie) => {
-    //     return <MovieListComponent movie={movie} />
-    // })
 
     //SCREEN METHODS
 
@@ -66,6 +63,7 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
 
     const handlePostMovie = (event) => {
         event.preventDefault()
+        console.log(JSON.stringify(stateMovie));
         postMovie(stateMovie, id)
     }
 
@@ -73,91 +71,105 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
         <>
 
             {/* form to add a screen */}
-            <section>
+            <section className="screens">
 
-            <h3>Current number of Screens</h3>
+                <div className="screenListItems">
+                    <h3>Current number of Screens</h3>
+                    <ol>
+                        {screenListItems}
+                    </ol>
+                </div>
 
-            <ol>
-                {screenListItems}
-            </ol>
+                <div className="screen-details">
+                    {selectedScreen && selectedScreen.screenings ?
+                        <ScreenDetailComponent
+                            selectedScreen={selectedScreen}
+                        />
+                        : <div></div>
+                    }
+                </div>
 
-            {selectedScreen && selectedScreen.screenings ?
-                <ScreenDetailComponent
-                    selectedScreen={selectedScreen}
-                />
-                : <div></div>
-            }
-
-            <form onSubmit={handlePostScreen}>
-                <h3>Add a new Screen</h3>
-                <label htmlFor="screen capacity">Enter Screen Capacity:</label>
-                <input
-                    type="text"
-                    placeholder="Enter Screen Capacity"
-                    name="capacity"
-                    onChange={handleScreenChange}
-                    value={stateScreen.capacity}
-                />
-                <button type="submit">Submit</button>
-            </form>
             </section>
-            <section>
 
-            {/* Form to add a movie */}
+            <div className="postScreen">
+                <form onSubmit={handlePostScreen}>
+                    <h3>Add a new Screen</h3>
+                    <label htmlFor="screen capacity">Enter Screen Capacity:</label>
+                    <input
+                        type="text"
+                        placeholder="Enter Screen Capacity"
+                        name="capacity"
+                        onChange={handleScreenChange}
+                        value={stateScreen.capacity}
+                    />
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
 
             <h3>Current Movies Being Shown</h3>
-            {/* {cinema} */}
+            
 
-            <ol>
-                {cinema.movies.map((movie) => {
-                    return <MovieListComponent
-                        movie={movie}
-                        screens={cinemaScreens}
-                        cinemas={cinemas}
-                        deleteMovie={deleteMovie}
-                    // postMovieToScreen ={postScreeningToScreen} 
+                {/* Form to add a movie */}
+               
+                <section className="movie-list-container">
+                    <div className="movie-list">
+
+                        {cinema.movies.map((movie) => {
+                            return <MovieListComponent
+                                movie={movie}
+                                screens={cinemaScreens}
+                                cinemas={cinemas}
+                                deleteMovie={deleteMovie}
+                            
+                            />
+                        })}
+
+                    </div>
+                </section>
+            
+
+            <section>
+                <form onSubmit={handlePostMovie}>
+                    <h3>Add a new Movie</h3>
+                    <label htmlFor="enter Genre"> Enter Genre:</label>
+                    <input
+                        type="text"
+                        placeholder="Enter Genre"
+                        name="genre"
+                        onChange={handleMovieChange}
+                        value={cinema.movies.genre}
                     />
-                })} 
-
-                {/* {movieListItems} */}
-             </ol>
-
-            <form onSubmit={handlePostMovie}>
-                <h3>Add a new Movie</h3>
-                <label htmlFor="enter Genre"> Enter Genre:</label>
-                <input
-                    type="text"
-                    placeholder="Enter Genre"
-                    name="genre"
-                    onChange={handleMovieChange}
-                    value={cinema.movies.genre}
-                />
-                <label htmlFor="enter length">Enter length:</label>
-                <input
-                    type="text"
-                    placeholder="Enter Length"
-                    name="length"
-                    onChange={handleMovieChange}
-                    value={cinema.movies.runTime}
-                />
-                <label htmlFor="enter releaseDate">Enter Release Date:</label>
-                <input
-                    type="text"
-                    placeholder="Enter Release Date"
-                    name="releaseDate"
-                    onChange={handleMovieChange}
-                    value={cinema.movies.releaseDate}
-                />
-                <label htmlFor="enter title">Enter Title:</label>
-                <input
-                    type="text"
-                    placeholder="Enter Title"
-                    name="title"
-                    onChange={handleMovieChange}
-                    value={cinema.movies.title}
-                />
-                <button type="submit">Submit</button>
-            </form>
+                    <br></br>
+                    <label htmlFor="enter length">Enter length:</label>
+                    <input
+                        type="text"
+                        placeholder="Enter Length"
+                        name="length"
+                        onChange={handleMovieChange}
+                        value={cinema.movies.runTime}
+                    />
+                    <br></br>
+                    <label htmlFor="enter releaseDate">Enter Release Date:</label>
+                    <input
+                        type="text"
+                        placeholder="Enter Release Date"
+                        name="releaseDate"
+                        onChange={handleMovieChange}
+                        value={cinema.movies.releaseDate}
+                    />
+                    <br></br>
+                    <label htmlFor="enter title">Enter Title:</label>
+                    <input
+                        type="text"
+                        placeholder="Enter Title"
+                        name="title"
+                        onChange={handleMovieChange}
+                        value={cinema.movies.title}
+                    />
+                    <br></br>
+                    <button type="submit">Submit</button>
+                </form>
             </section>
 
         </>

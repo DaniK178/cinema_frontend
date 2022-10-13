@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom"
 
 
+
+
 const MovieListComponent = ({ movie, screens, cinemas, deleteMovie}) => {
 
     const { id } = useParams()
@@ -20,14 +22,13 @@ const MovieListComponent = ({ movie, screens, cinemas, deleteMovie}) => {
 
     const handleDeleteMovie = (evt) => {
         evt.preventDefault();
-        console.log("movie in delete method: " + JSON.stringify(movie));
-        console.log("cinema...: " + JSON.stringify(cinema));
         deleteMovie(cinema.id, movie.id);
     } 
 
     return (
         <>
-            <li> Title:{movie.title}, Genre {movie.genre} </li>
+        
+            <div className="movie-list-item"> <h4>Title:{movie.title}</h4>, <h4>Genre: {movie.genre}</h4> 
             <br></br>
             <form>
                 <select>
@@ -38,6 +39,7 @@ const MovieListComponent = ({ movie, screens, cinemas, deleteMovie}) => {
                 <br></br>
                 <button onClick= {handleDeleteMovie}>Delete Movie</button>
             </form>
+            </div>
 
         </>
     );
@@ -46,17 +48,3 @@ const MovieListComponent = ({ movie, screens, cinemas, deleteMovie}) => {
 
 export default MovieListComponent;
 
-
-
-
-    // const screenId = screens.map((screen) => {
-    //     return screen.id;
-    // })
-
-    // screenId, movieId, cinemaId, screeningId
-    
-    // const handlePostScreening = (event) => {
-    //     event.preventDefault()
-    //     console.log(event)
-    //     postMovieToScreen(event.target.value)
-    // }
