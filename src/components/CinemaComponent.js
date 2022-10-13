@@ -117,6 +117,7 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
             {/* {cinema} */}
             
             <ol>
+                <section className="listItems">
                 {cinema.movies.map((movie) => {
                     return <MovieListComponent
                         movie={movie}
@@ -128,6 +129,7 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
                 })} 
 
                 {/* {movieListItems} */}
+                </section>
              </ol>
              </section>
 

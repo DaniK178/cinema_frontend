@@ -1,4 +1,6 @@
 import { useParams } from "react-router-dom"
+import "./MovieListComponent.css"
+
 
 
 const MovieListComponent = ({ movie, screens, cinemas, deleteMovie}) => {
@@ -27,7 +29,10 @@ const MovieListComponent = ({ movie, screens, cinemas, deleteMovie}) => {
 
     return (
         <>
+        <section className="movieList">
+            <div className="listItems">
             <li> Title:{movie.title}, Genre {movie.genre} </li>
+            </div>
             <br></br>
             <form>
                 <select>
@@ -38,6 +43,7 @@ const MovieListComponent = ({ movie, screens, cinemas, deleteMovie}) => {
                 <br></br>
                 <button onClick= {handleDeleteMovie}>Delete Movie</button>
             </form>
+            </section>
 
         </>
     );
