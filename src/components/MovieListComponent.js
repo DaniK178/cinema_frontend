@@ -29,10 +29,8 @@ const MovieListComponent = ({ movie, screens, cinemas, deleteMovie}) => {
 
     return (
         <>
-        <section className="movieList">
-            <div className="listItems">
-            <li> Title:{movie.title}, Genre {movie.genre} </li>
-            </div>
+        
+            <div className="movie-list-item"> <h4>Title:{movie.title}</h4>, <h4>Genre: {movie.genre}</h4> 
             <br></br>
             <form>
                 <select>
@@ -43,7 +41,7 @@ const MovieListComponent = ({ movie, screens, cinemas, deleteMovie}) => {
                 <br></br>
                 <button onClick= {handleDeleteMovie}>Delete Movie</button>
             </form>
-            </section>
+            </div>
 
         </>
     );

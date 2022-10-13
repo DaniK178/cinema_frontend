@@ -110,12 +110,13 @@ const CinemaContainer = () => {
 
 
     return (
+        <body>
         <>
         
       
-
+        
         <BrowserRouter>
-        <body>
+        
             <header> 
             <nav>
 
@@ -172,9 +173,11 @@ const CinemaContainer = () => {
                 
             </footer>
 
-            </body>
+            
         </BrowserRouter>
+        
         </>
+        </body>
     )
 
 

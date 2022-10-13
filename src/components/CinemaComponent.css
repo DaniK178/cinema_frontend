@@ -28,7 +28,19 @@
        
 }
 
-.listItem .li {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    
+    
+
+
+}
+
+.movie-list-item {
+    width: 19rem;
+    margin: 1rem;
+    background-color: beige;
+
+
 }
