@@ -58,7 +58,7 @@ header nav ul {
 
 }
 
-#UpcomingMovies{
- 
+.upcomingMovies{
+ display: flex;
 }
  
