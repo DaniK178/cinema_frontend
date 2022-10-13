@@ -1,0 +1,36 @@
+
+.screens {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.screens .screenListItems {
+    padding: 4%;
+    order: 1;
+    align-items: center;
+
+}
+
+.screens .screen-details {
+    padding: 4%;
+    order: 2;
+    align-items: center;
+       
+}
+
+.postScreen {
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    
+       
+}
+
+
+.screeningGrids .ol {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}

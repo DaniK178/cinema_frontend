@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import MovieListComponent from "./MovieListComponent"
 import ScreenListItem from "./ScreenListItem"
 import ScreenDetailComponent from "./ScreenDetailComponent"
+import './CinemaComponent.css';
 
 
 
@@ -73,21 +74,27 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
         <>
 
             {/* form to add a screen */}
-            <section>
+            <section className="screens">
 
+            <div className="screenListItems">
             <h3>Current number of Screens</h3>
-
             <ol>
                 {screenListItems}
             </ol>
+            </div>
 
+            <div className="screen-details">
             {selectedScreen && selectedScreen.screenings ?
                 <ScreenDetailComponent
                     selectedScreen={selectedScreen}
                 />
                 : <div></div>
             }
+            </div>
 
+            </section>
+
+            <div className="postScreen">
             <form onSubmit={handlePostScreen}>
                 <h3>Add a new Screen</h3>
                 <label htmlFor="screen capacity">Enter Screen Capacity:</label>
@@ -100,14 +107,15 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
                 />
                 <button type="submit">Submit</button>
             </form>
-            </section>
-            <section>
-
-            {/* Form to add a movie */}
+            </div>
+            
 
             <h3>Current Movies Being Shown</h3>
-            {/* {cinema} */}
+            <section className="screeningGrids">
 
+            {/* Form to add a movie */}
+            {/* {cinema} */}
+            
             <ol>
                 {cinema.movies.map((movie) => {
                     return <MovieListComponent
@@ -121,7 +129,9 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
 
                 {/* {movieListItems} */}
              </ol>
+             </section>
 
+             <section>
             <form onSubmit={handlePostMovie}>
                 <h3>Add a new Movie</h3>
                 <label htmlFor="enter Genre"> Enter Genre:</label>
