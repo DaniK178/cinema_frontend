@@ -22,6 +22,8 @@ const HomeComponent = ({cinemas}) => {
 
     return (
         <>
+
+        <section> 
         <h3>Please select your cinema</h3>
 
         <form onSubmit={handleCinemaNavigation}>
@@ -35,7 +37,13 @@ const HomeComponent = ({cinemas}) => {
             <button type="submit">OK</button>
         </form>
         
-       
+       </section>
+       <section ClassName="Upcoming Movies">
+
+       </section>
+       <section ClassName= "Cinema Of the Month">
+
+       </section>
         </>
     )
 

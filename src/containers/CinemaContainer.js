@@ -115,7 +115,8 @@ const CinemaContainer = () => {
       
 
         <BrowserRouter>
-            
+        <body>
+            <header> 
             <nav>
 
             <ul>
@@ -131,6 +132,8 @@ const CinemaContainer = () => {
         </nav>
 
         <h1>Welcome to BrightChain Cinema Mangement System</h1>
+        </header>
+        <main>
 
 
             <Routes>
@@ -164,7 +167,12 @@ const CinemaContainer = () => {
                 <Route path='/customers' element={<CustomerComponent />} />
 
             </Routes>
+            </main>
+            <footer>
+                
+            </footer>
 
+            </body>
         </BrowserRouter>
         </>
     )

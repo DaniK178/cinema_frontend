@@ -73,6 +73,7 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
         <>
 
             {/* form to add a screen */}
+            <section>
 
             <h3>Current number of Screens</h3>
 
@@ -99,6 +100,8 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
                 />
                 <button type="submit">Submit</button>
             </form>
+            </section>
+            <section>
 
             {/* Form to add a movie */}
 
@@ -155,6 +158,7 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
                 />
                 <button type="submit">Submit</button>
             </form>
+            </section>
 
         </>
 
