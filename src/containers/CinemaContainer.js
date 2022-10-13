@@ -5,6 +5,7 @@ import MovieComponent from "../components/MovieComponent";
 import CustomerComponent from "../components/CustomerComponent";
 import HomeComponent from "../components/HomeComponent";
 import ScreenDetailComponent from "../components/ScreenDetailComponent";
+import Footer from "../components/Footer";
 
 
 const CinemaContainer = () => {
@@ -170,6 +171,7 @@ const CinemaContainer = () => {
             </Routes>
             </main>
             <footer>
+                <Footer/>
                 
             </footer>
 
