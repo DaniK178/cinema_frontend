@@ -38,10 +38,10 @@ const HomeComponent = ({cinemas}) => {
         </form>
         
        </section>
-       <section ClassName="Upcoming Movies">
+       <section className="Upcoming Movies">
 
        </section>
-       <section ClassName= "Cinema Of the Month">
+       <section className= "Cinema Of the Month">
 
        </section>
         </>
