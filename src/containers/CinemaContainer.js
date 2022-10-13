@@ -92,6 +92,7 @@ const CinemaContainer = () => {
                 <BrowserRouter>
 
                     <header>
+                    <img src= "../Photos/bn_cinema_logo.png" alt="cinema Logo" ></img>
                         <nav>
                             <ul>
                                 <li> <Link to='/'> Home </Link> </li>
