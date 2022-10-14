@@ -9,9 +9,7 @@ body{
   color:white;
   font-family: 'Cairo', sans-serif;
   
-
 }
-
 
 main{
   padding: 35px
@@ -66,14 +64,10 @@ header nav ul li {
  header {
   
     background-color: black;
-    /* display: flex;
-    align-items: center; */
     color: white;
 
 
  }
-
-
 
  header nav li:Link{
   text-decoration: none
@@ -108,43 +102,26 @@ header nav ul li {
   margin: 10px;
 }
 
-#CinemaOfTheMonth{
-  padding: 20px;
-  display: grid;
-  grid-gap: 30px;
-  /* grid-template-columns: 1fr 2fr; */
-  grid-template-columns: [col1-start] 1fr  [col2-start] 1fr[col2-end]; 
-  grid-template-rows: [row1-start] 1fr [row2-start] 250px[row2-end];
 
+ .CinemaOfTheMonth{  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "CotM-QandA cinema-employees film-poster"
+    "CotM-QandA cinema-image film-festival";
 }
 
-#CotM-QandA{
-  grid-column: col1-start;
-  grid-row: row1-start / row2-end;
+.CotM-QandA{ grid-area: CotM-QandA; }
 
-}
+.cinema-employees { grid-area: cinema-employees; }
 
+.cinema-image { grid-area: cinema-image; }
 
-#cinema-employees{
-  grid-column: col2-start;
-  grid-row: row2-start / row2-end;;
-  width: 50%;
+.film-festival { grid-area: film-festival; }
 
-}
-
-#cinema-image{
-  grid-column: col2-start;
-  grid-row: row2-start ;
-  width: 50%;
-
-}
-
-#film-festival{
-  grid-column: col3-start;
-  grid-row: row2-start ;
-  width: 50%;
-
-}  
+.film-poster {grid-area: film-poster  }
 
 footer ul{
   padding: 20px;
@@ -166,11 +143,6 @@ footer ul{
 
 }
 
-/* ul {
-  padding: 5px;
-  background-color: #eee;
-  display: inline-block;
-} */
 
 #logo2 {
   width:10%;
@@ -183,8 +155,12 @@ footer ul{
   text-align: center;
 }
 
-
 .upcomingMovies{
  display: flex;
+}
 
+img{
+  width: 100%;
+  max-height: 100%;
+  padding: 8px;
 }
