@@ -3,7 +3,7 @@
 const ScreeningListItemComponent = ({screening}) => {
 
     return (
-        <li>{screening.movie.title}, {screening.movie.length}</li>
+        <li>{screening.movie.title}, Length:{screening.movie.length} mins</li>
     )
 
 

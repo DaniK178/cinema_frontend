@@ -2,7 +2,7 @@ import { useState, React } from "react"
 import { useParams } from "react-router-dom"
 import MovieListComponent from "./MovieListComponent"
 import ScreenListItem from "./ScreenListItem"
-import ScreenDetailComponent from "./ScreenDetailComponent"
+import ScreenDetailComponent from "./ScreeningDetailComponent"
 import './CinemaComponent.css';
 
 
@@ -18,10 +18,6 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
         const cinemaId = parseInt(id)
         return cinemaId === cinema.id;
     })
-
-    // const movieListItems = cinema.movies.map((movie) => {
-    //     return <MovieListComponent movie={movie} />
-    // })
 
     //SCREEN METHODS
 
@@ -126,11 +122,9 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
                                 screens={cinemaScreens}
                                 cinemas={cinemas}
                                 deleteMovie={deleteMovie}
-                            // postMovieToScreen ={postScreeningToScreen} 
+                            
                             />
                         })}
-
-                        {/* {movieListItems} */}
 
                     </div>
                 </section>
@@ -167,7 +161,8 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
                         value={cinema.movies.releaseDate}
                     />
                     <br></br>
-                    <label htmlFor="enter title">Enter Title: </label>
+                    
+                    <label htmlFor="enter title">Enter Title:</label>
                     <input
                         type="text"
                         placeholder="Enter Title"
