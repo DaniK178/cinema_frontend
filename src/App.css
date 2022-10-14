@@ -118,7 +118,6 @@ header nav ul li {
 
 }
 
-<<<<<<< HEAD
 #CotM-QandA{
   grid-column: col1-start;
   grid-row: row1-start / row2-end;
@@ -182,9 +181,10 @@ footer ul{
 }
 #copy{
   text-align: center;
+}
 
-=======
+
 .upcomingMovies{
  display: flex;
->>>>>>> 5d88cb39ca99e25f5cb16fc0de30794cd75382fb
+
 }
