@@ -107,13 +107,14 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
             </div>
 
 
-            <h3>Current Movies Being Shown</h3>
+            <h2 className="current-movies-title">Current Movies Being Shown</h2>
             
 
                 {/* Form to add a movie */}
                
                 <section className="movie-list-container">
                     <div className="movie-list">
+                        
 
                         {cinema.movies.map((movie) => {
                             return <MovieListComponent
@@ -129,9 +130,9 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
                 </section>
             
 
-            <section>
+            <section className="new-movie-form">
                 <form onSubmit={handlePostMovie}>
-                    <h3>Add a new Movie</h3>
+                    <h3 className="new-movie-post">Add a new Movie</h3>
                     <label htmlFor="enter Genre"> Enter Genre:</label>
                     <input
                         type="text"
@@ -141,7 +142,8 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
                         value={cinema.movies.genre}
                     />
                     <br></br>
-                    <label htmlFor="enter length">Enter length:</label>
+
+                    <label htmlFor="enter length">Enter length: </label>
                     <input
                         type="text"
                         placeholder="Enter Length"
@@ -150,7 +152,7 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
                         value={cinema.movies.runTime}
                     />
                     <br></br>
-                    <label htmlFor="enter releaseDate">Enter Release Date:</label>
+                    <label htmlFor="enter releaseDate">Enter Release Date: </label>
                     <input
                         type="text"
                         placeholder="Enter Release Date"
@@ -159,6 +161,7 @@ const CinemaComponent = ({ postScreen, cinemas, cinemaScreens, postMovie, select
                         value={cinema.movies.releaseDate}
                     />
                     <br></br>
+                    
                     <label htmlFor="enter title">Enter Title:</label>
                     <input
                         type="text"

@@ -28,16 +28,18 @@ const MovieListComponent = ({ movie, screens, cinemas, deleteMovie}) => {
     return (
         <>
         
-            <div className="movie-list-item"> <h4>Title:{movie.title}</h4>, <h4>Genre: {movie.genre}</h4> 
+            <div className="movie-list-item">
+            <img className="movie-poster" src="https://api.lorem.space/image/movie?w=150&amp;amp;amp;amp;h=220" alt="A Movie Poster"></img>
+            <h4>Title: {movie.title}</h4> <h4>Genre: {movie.genre}</h4> 
             <br></br>
             <form>
                 <select>
                     <option disabled-value="select-screen" >Select Screen</option>
                     {screensOptions}
                 </select>
-                <button type="submit">Add Movie to screen</button>
+                <button class="add-movie-button" type="submit">Add Movie to screen</button>
                 <br></br>
-                <button onClick= {handleDeleteMovie}>Delete Movie</button>
+                <button class ="delete-movie-button" onClick= {handleDeleteMovie}>Delete Movie</button>
             </form>
             </div>
 
