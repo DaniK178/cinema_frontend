@@ -32,19 +32,19 @@ const CinemaOfTheMonth = () => {
         {/* <div className ="CotM-images">  */}
 
             <div className="cinema-employees">
-                 <img src= "https://i2-prod.plymouthherald.co.uk/incoming/article1614539.ece/ALTERNATES/s1227b/PLPC20180525F-012_CJPG.jpg" alt="Image of cinema employees" ></img>
+                 <img src= "../Photos/cinema_employees.jpg" alt="Image of cinema employees" ></img>
             </div>
         
             <div className="cinema-image">
-                <img  src= "https://www.shropshirestar.com/resizer/XpzgV5hQLnbfAlKXsY_S1X9OmUA=/1200x0/cloudfront-us-east-1.images.arcpublishing.com/mna/IHDP6JZUCRDX3EBLMPE5SQRSQI.jpg" alt="Image of cinema" ></img>
+                <img  src= "../Photos/cinema_seating.jpg" alt="Image of cinema" ></img>
             </div>
 
             <div className="film-festival"> 
-                <img  src= " https://raindance.org/wp-content/uploads/2021/11/festivals.jpeg" alt="film festival"></img>
+                <img  src= " ../Photos/cinema-festival.jpeg" alt="film festival"></img>
             </div>
 
             <div className="film-poster"> 
-                <img  src= " https://previews.123rf.com/images/pimonova/pimonova1407/pimonova140700032/30510191-movie-cinema-festival-poster-vector-background-with-hand-drawn-sketch-illustrations.jpg" alt="film festival"></img>
+                <img  src= " ../Photos/Cinema-festival-poster.webp" alt="film festival"></img>
             </div>
 
 
