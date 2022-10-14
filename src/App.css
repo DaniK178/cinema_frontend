@@ -8,18 +8,58 @@ body{
   background-color:#1a1a1c;
   color:white;
   font-family: 'Cairo', sans-serif;
+  
 
 }
+
+
+main{
+  padding: 35px
+
+}
+
+#logo{
+  width:10%;
+  height: 10%;
+  float: left;
+  padding-top: 10px;
+}
+
+h1{
+  text-align: center;
+
+}
+
+
 
 header nav ul {
   width: 60%;
   display: flex;
   flex-direction: horizontal;
-  justify-content: space-around;
+  justify-content: space-evenly;
   list-style: none;
-  font-size: larger;
+  font-size: 20px;
   color: aliceblue;
+  text-align: center;
 
+}
+
+.link-styles{
+  color: rgb(173, 175, 181);
+  font-weight: 700;
+
+
+}
+
+header nav ul li {
+  padding: 40px;
+  
+
+}
+
+#top-nav{
+  display:flex;
+  justify-content: space-evenly;
 }
 
 
@@ -34,27 +74,112 @@ header nav ul {
  }
 
 
+
  header nav li:Link{
   text-decoration: none
  }
 
- header nav ul:visited{
+ header nav ul li:visited{
   text-decoration: none
  }
 
- header nav li:hover{
-  color: pink;
+ .link-styles:hover{
+  color: rgb(129, 67, 170);
  
  }
 
- header nav li:active{
+ header nav ul li:active{
   text-decoration: none
  }
 
+#CotM-title{
+  font-size: large;
+}
+#CotM-title span{
+  background-color: rgb(77, 76, 76) ;
+}
+
+#CotM-winner{
+  font-size: 50px;
+  font-family: sans-serif;
+  background: -webkit-linear-gradient( rgb(129, 67, 170), #eee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 10px;
+}
 
 #CinemaOfTheMonth{
+  padding: 20px;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-gap: 30px;
+  /* grid-template-columns: 1fr 2fr; */
+  grid-template-columns: [col1-start] 1fr  [col2-start] 1fr[col2-end]; 
+  grid-template-rows: [row1-start] 1fr [row2-start] 250px[row2-end];
 
 }
- 
+
+#CotM-QandA{
+  grid-column: col1-start;
+  grid-row: row1-start / row2-end;
+
+}
+
+
+#cinema-employees{
+  grid-column: col2-start;
+  grid-row: row2-start / row2-end;;
+  width: 50%;
+
+}
+
+#cinema-image{
+  grid-column: col2-start;
+  grid-row: row2-start ;
+  width: 50%;
+
+}
+
+#film-festival{
+  grid-column: col3-start;
+  grid-row: row2-start ;
+  width: 50%;
+
+}  
+
+footer ul{
+  padding: 20px;
+  display: inline-block;
+  background-color:rgb(77, 76, 76);
+
+}
+
+.footer-part{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.footer-part li{
+  padding: 10px;
+  text-decoration: none;
+  list-style: none;
+
+}
+
+/* ul {
+  padding: 5px;
+  background-color: #eee;
+  display: inline-block;
+} */
+
+#logo2 {
+  width:10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+#copy{
+  text-align: center;
+
+}

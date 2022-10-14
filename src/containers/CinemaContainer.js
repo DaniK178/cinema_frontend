@@ -92,15 +92,17 @@ const CinemaContainer = () => {
                 <BrowserRouter>
 
                     <header>
-                    <img src= "../Photos/bn_cinema_logo.png" alt="cinema Logo" ></img>
+                    <div id= "top-nav" >
+                        <img id="logo" src= "../Photos/bn_cinema_logo.png" alt="cinema Logo" ></img>
                         <nav>
                             <ul>
-                                <li> <Link to='/'> Home </Link> </li>
-                                <li> <Link to='/cinemas/:id'> Cinemas </Link> </li>
-                                <li> <Link to='/cinemas/:id/movies'> Movies </Link> </li>
-                                <li> <Link to='/customers'> Customers </Link> </li>
+                                <li> <Link  className="link-styles" style={{textDecoration: 'none'}} to='/'> Home </Link> </li>
+                                <li> <Link className="link-styles"  style={{textDecoration: 'none'}} to='/cinemas/:id'> Cinemas </Link> </li>
+                                <li> <Link className="link-styles"  style={{textDecoration: 'none'}} to='/cinemas/:id/movies'> Movies </Link> </li>
+                                <li> <Link className="link-styles"  style={{textDecoration: 'none'}}to='/customers'> Customers </Link> </li>
                             </ul>
                         </nav>
+                        </div>
                         <h1>Welcome to BrightChain Cinema Mangement System</h1>
                     </header>
                     <main>
