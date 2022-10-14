@@ -88,7 +88,7 @@ header nav ul li {
  }
 
 #CotM-title{
-  font-size: large;
+  /* font-size: large; */
 }
 #CotM-title span{
   background-color: rgb(77, 76, 76) ;

@@ -4,7 +4,7 @@ const CinemaOfTheMonth = () => {
         <>
         <hr></hr>
 
-        <h3 id="CotM-title"><span>The Cinema of the Month is:  </span> </h3>
+        <h2 id="CotM-title"><span>The Cinema of the Month is:  </span> </h2>
         <h4 id="CotM-winner">Not Vue </h4>
             
         <section className="CinemaOfTheMonth">

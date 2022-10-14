@@ -26,7 +26,7 @@ const HomeComponent = ({cinemas}) => {
         <>
 
         <section> 
-        <h3>Please select your cinema</h3>
+        <h2>Please select your cinema</h2>
 
         <form onSubmit={handleCinemaNavigation}>
             <select
@@ -40,12 +40,14 @@ const HomeComponent = ({cinemas}) => {
         </form>
         
        </section>
+       <hr></hr>
        <section className="Upcoming Movies">
             <UpcomingMovies />
        </section>
        <section className= "Cinema-Of-the-Month">
             <CinemaOfTheMonth/>
        </section>
+      
         </>
     )
 
