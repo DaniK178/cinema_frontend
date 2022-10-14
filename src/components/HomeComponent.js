@@ -43,7 +43,7 @@ const HomeComponent = ({cinemas}) => {
        <section className="Upcoming Movies">
             <UpcomingMovies />
        </section>
-       <section className= "Cinema Of the Month">
+       <section className= "Cinema-Of-the-Month">
             <CinemaOfTheMonth/>
        </section>
         </>
