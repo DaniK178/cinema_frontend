@@ -6,6 +6,7 @@ import FontLink from './FontLink';
 function App() {
   return (
     <>
+
     <FontLink/>
    
    <CinemaContainer />
